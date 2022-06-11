@@ -1,0 +1,9 @@
+{
+  "Id": "MinesweeperFlag",
+  "DisplayName": "MinesweeperFlag",
+  "Author": "HYONSU",
+  "Version": "0.0.1",
+  "AssemblyName": "MinesweeperFlag.dll",
+  "EntryMethod": "MinesweeperFlag.Main.Load",
+  "Repository": ""
+}

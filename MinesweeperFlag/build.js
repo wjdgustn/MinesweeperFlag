@@ -25,6 +25,9 @@ setImmediate(async () => {
 
         fs.writeFileSync('./Release/Info.json', JSON.stringify(Info, null, 4))
     }
+    
+    const assets = fs.readdirSync('./assets')
+    for(let a of assets) fs.copyFileSync(path.join('./assets', a), path.join('./Release', a))
 
     if (args.release) {
         const zip = archiver('zip', {})
@@ -45,6 +48,7 @@ setImmediate(async () => {
             if(!args.norestart) fs.mkdirSync(modPath)
             fs.copyFileSync(`Release/${info.Id}.dll`, path.join(modPath, info.Id + '.dll'))
             fs.copyFileSync('Release/Info.json', path.join(modPath, 'Info.json'))
+            for(let a of assets) fs.copyFileSync(path.join('Release', a), path.join(modPath, a))
 
             if(!args.norestart) try {
                 await cp.exec('explorer steam://rungameid/977950')
